@@ -11,9 +11,36 @@ MongoClient.connect(connectionURL, { useNewUrlParser : true }, (error, client) =
 
   const db = client.db(databaseName)
 
-  db.collection('users').insertOne({
-      name: 'Ruth',
-      age: 30
-  })
+  db.collection('tasks').insertMany([
+    {
+      description: 'Eat at Borough Market',
+      completed: false,
+    },
+    {
+      description: 'Take photos at Houses of Parliament',
+      completed: false,
+    },
+    {
+      description: 'Visit Van Gogh exhibition',
+      completed: true,
+    },
+    {
+      description: 'Take in the view at Sky Garden',
+      completed: false,
+    },
+    {
+      description: 'Walk by the river to Tower Bridge',
+      completed: false,
+    },
+    {
+      description: 'Watch a show on the West End',
+      completed: false,
+    }
+  ], (error, result) => {
+    if (error) {
+      return console.log('Unable to insert tasks')
+    }
 
+    console.log(result.ops)
+  })
 })
