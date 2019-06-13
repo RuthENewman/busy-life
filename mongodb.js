@@ -14,11 +14,15 @@ MongoClient.connect(connectionURL, { useNewUrlParser : true }, (error, client) =
 
   const db = client.db(databaseName)
 
-  db.collection('users').findOne({_id: new ObjectID("5d026b53678bcbc8db01ead2")}, (error, user) => {
-      if (error) {
-        return console.log('Unable to find user')
-      }
-      console.log(user)
+  // db.collection('users').findOne({_id: new ObjectID("5d026b53678bcbc8db01ead2")}, (error, user) => {
+  //     if (error) {
+  //       return console.log('Unable to find user')
+  //     }
+  //     console.log(user)
+  // })
+
+  db.collection('tasks').find({completed: false}).toArray((error, tasks) => {
+    console.log(tasks)
   })
 
 })
