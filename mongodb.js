@@ -13,40 +13,20 @@ MongoClient.connect(connectionURL, { useNewUrlParser : true }, (error, client) =
   }
 
   const db = client.db(databaseName)
-  //
-  // db.collection('tasks').updateOne({
-  //   _id: new ObjectID("5d01814593183bc5cf4b4815")
-  // }, {
-  //   $set: {
-  //     completed: true
-  //   }
-  // }).then(() => {
+
+  // db.collection('users').deleteMany({
+  //   age: 30
+  // }).then((result) => {
   //   console.log(result)
-  // }).catch(() => {
+  // }).catch((error) => {
   //   console.log(error)
   // })
 
-  // db.collection('users').updateOne({
-  //     _id: new ObjectID("5d026b53678bcbc8db01ead2")
-  //   }, {
-  //     $inc: {
-  //       age: 1
-  //     }
-  //   }).then(() => {
-  //     console.log(result)
-  //   }).catch(() => {
-  //     console.log(error)
-  //   })
-
-  db.collection('tasks').updateMany({
-    completed: false
-  }, {
-    $set: {
-      completed: true
-    }
-  }).then(() => {
-    console.log(result.modifiedCount)
-  }).catch(() => {
+  db.collection('tasks').deleteOne({
+    description: "Take in the view at Sky Garden"
+  }).then((result) => {
+    console.log(result)
+  }).catch((error) => {
     console.log(error)
   })
 })
