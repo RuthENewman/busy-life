@@ -31,51 +31,74 @@ const User = mongoose.model('User', {
         throw new Error('Age must be a positive number')
       }
     }
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 7,
+    trim: true,
+    validate(value) {
+      if (value.toLowerCase().includes('password')) {
+        throw new Error('Password cannot contain the word \'password\'.')
+      }
+    }
   }
 })
 
-const me = new User({
-  name: 'Ruth',
-  age: 30,
-  email: 'ruth@gmail.com'
-})
+// const me = new User({
+//   name: 'Ruth',
+//   age: 30,
+//   email: 'ruth@gmail.com',
+//   password: '123456789'
+// })
+//
+// me.save().then(() => {
+//   console.log(me)
+// }).catch((error) => {
+//   console.log('Oops there\'s an error: ', error)
+// })
 
-
-me.save().then(() => {
-  console.log(me)
-}).catch((error) => {
-  console.log('Oops there\'s an error: ', error)
-})
-
-const someoneElse = new User({
-  name: 'Joe',
-  email: 'joe@gmail.com'
-})
-
-someoneElse.save().then(() => {
-  console.log(someoneElse)
-}).catch((error) => {
-  console.log('Oops there\'s an error: ', error)
-})
-
-
+// const someoneElse = new User({
+//   name: 'Joe',
+//   email: 'joe@gmail.com',
+//   password: 'myfunkyword'
+// })
+//
+// someoneElse.save().then(() => {
+//   console.log(someoneElse)
+// }).catch((error) => {
+//   console.log('Oops there\'s an error: ', error)
+// })
 
 const Task = mongoose.model('Task', {
   description: {
-    type: String
+    type: String,
+    required: true,
+    trim: true
   },
   completed: {
-    type: Boolean
+    type: Boolean,
+    default: false
   }
 })
+//
+// const rehearsal = new Task({
+//   description: 'Attend ukulele group rehearsal',
+//   completed: false
+// })
+//
+// rehearsal.save().then(() => {
+//   console.log(rehearsal)
+// }).catch((error) => {
+//   console.log('Oops there\'s an error: ', error)
+// })
 
-const rehearsal = new Task({
-  description: 'Attend ukulele group rehearsal',
-  completed: false
+const tennis = new Task({
+  description: '  Visit Edgbaston Classic tennis tournament',
 })
 
-rehearsal.save().then(() => {
-  console.log(rehearsal)
+tennis.save().then(() => {
+  console.log(tennis)
 }).catch((error) => {
   console.log('Oops there\'s an error: ', error)
 })
