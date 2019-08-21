@@ -45,30 +45,30 @@ const User = mongoose.model('User', {
   }
 })
 
-// const me = new User({
-//   name: 'Ruth',
-//   age: 30,
-//   email: 'ruth@gmail.com',
-//   password: '123456789'
-// })
-//
-// me.save().then(() => {
-//   console.log(me)
-// }).catch((error) => {
-//   console.log('Oops there\'s an error: ', error)
-// })
+const me = new User({
+  name: 'Ruth',
+  age: 30,
+  email: 'ruth@gmail.com',
+  password: '123456789'
+})
 
-// const someoneElse = new User({
-//   name: 'Joe',
-//   email: 'joe@gmail.com',
-//   password: 'myfunkyword'
-// })
-//
-// someoneElse.save().then(() => {
-//   console.log(someoneElse)
-// }).catch((error) => {
-//   console.log('Oops there\'s an error: ', error)
-// })
+me.save().then(() => {
+  console.log(me)
+}).catch((error) => {
+  console.log('Oops there\'s an error: ', error)
+})
+
+const someoneElse = new User({
+  name: 'Joe',
+  email: 'joe@gmail.com',
+  password: 'myfunkyword'
+})
+
+someoneElse.save().then(() => {
+  console.log(someoneElse)
+}).catch((error) => {
+  console.log('Oops there\'s an error: ', error)
+})
 
 const Task = mongoose.model('Task', {
   description: {
@@ -81,17 +81,17 @@ const Task = mongoose.model('Task', {
     default: false
   }
 })
-//
-// const rehearsal = new Task({
-//   description: 'Attend ukulele group rehearsal',
-//   completed: false
-// })
-//
-// rehearsal.save().then(() => {
-//   console.log(rehearsal)
-// }).catch((error) => {
-//   console.log('Oops there\'s an error: ', error)
-// })
+
+const rehearsal = new Task({
+  description: 'Attend ukulele group rehearsal',
+  completed: false
+})
+
+rehearsal.save().then(() => {
+  console.log(rehearsal)
+}).catch((error) => {
+  console.log('Oops there\'s an error: ', error)
+})
 
 const tennis = new Task({
   description: '  Visit Edgbaston Classic tennis tournament',
